@@ -5,7 +5,7 @@ export default class LineGraph extends Component {
     chartRef = React.createRef();
        
     componentDidMount() {
-       const chartTitle = this.props.title
+       
         const { lineData } = this.props
         const myChartRef = this.chartRef.current.getContext("2d");
         
@@ -13,7 +13,6 @@ export default class LineGraph extends Component {
             responsive:true,
             type: "line",
             data: {
-                //Bring in data
                 "labels" : ["January", "February", "March","April","May","June","July","August","September","October","November","December"],
                 
                 datasets: [
@@ -33,12 +32,6 @@ export default class LineGraph extends Component {
                        }
                     }
                 },
-                // title: {
-                //     display: true,
-                //     fontSize:10,
-                //     padding:0,
-                //     text: chartTitle
-                // },
                 scales: {
                     yAxes: [{
                         ticks: {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import './App.css';
-import { makeStyles } from '@material-ui/styles';
-import { DragDropContext } from 'react-beautiful-dnd';
 import Navbar from './components/Navbar';
 import Text from './components/Cards/Text';
 import Grid from '@material-ui/core/Grid'
@@ -10,6 +8,7 @@ import PieGraph from './charts/PieGraph'
 import BarGraph from './charts/BarGraph'
 import PolarGraph from './charts/PolarGraph'
 import jsondata from './charts/data.json'
+import jsondata2 from './charts/data2.json'
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = {
@@ -18,7 +17,6 @@ const styles = {
   },
   navigation: {
     height: '8%',
-
   },
   grid: {
     padding: '1rem',
@@ -33,8 +31,6 @@ const styles = {
   left: {
     left: 0,
     color:'white',
-    
-    
   },
   right: {
     right: 0,
@@ -46,7 +42,8 @@ const styles = {
     top: 0,
     borderBottom: '1px dashed black',
     overflow: 'hidden',
-    paddingTop:"1.7rem",
+    paddingBottom:'1rem',
+    paddingTop:"1.2rem",
     paddingLeft:"1.5rem",
     backgroundColor:'#515A5A',
   },
@@ -54,7 +51,7 @@ const styles = {
     height: '50%',
     bottom: 0,
     paddingLeft:"1.5rem",
-    paddingTop:"0.5rem",
+    paddingTop:"0.1rem",
     backgroundColor:'#5D6D7E'
   }
 };
@@ -64,10 +61,10 @@ const data = [
   { id: 1, title: jsondata.data2.label, value: "BarGraph1"},
   { id: 2, title: jsondata.data3.label, value: "PieGraph1"},
   { id: 3, title: jsondata.data4.label, value: "PolarGraph1"},
-  { id: 4, title: jsondata.data1.label, value: "BarGraph2"},
-  { id: 5, title: jsondata.data2.label, value: "PieGraph2"},
-  { id: 6, title: jsondata.data3.label, value: "PolarGraph2"},
-  { id: 7, title: jsondata.data4.label, value: "LineGraph2"},
+  { id: 4, title: jsondata2.data1.label, value: "BarGraph2"},
+  { id: 5, title: jsondata2.data2.label, value: "PieGraph2"},
+  { id: 6, title: jsondata2.data3.label, value: "PolarGraph2"},
+  { id: 7, title: jsondata2.data4.label, value: "LineGraph2"},
 ]
 
 class App extends Component {
@@ -106,25 +103,25 @@ class App extends Component {
         <div className={classes.grid}>
           <div className={`${classes.half} ${classes.left}`}>
             <div className={`${classes.top} ${classes.root}`} >
-            
+            <p style={{marginBottom:2, paddingLeft:"39%"}}>App 1</p>
               <Grid container spacing={0} >
                 {data.map(i => {
-                  if(i.value =='LineGraph1'){
+                  if(i.value ==='LineGraph1'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
                           <Text style={{height:10}}><LineGraph lineData={jsondata.data1} title={i.title}/></Text>
                         </Grid>
                   }
-                  if(i.value =='PieGraph1'){
+                  if(i.value ==='PieGraph1'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
                           <Text><PieGraph pieData={jsondata.data3} title={i.title}/></Text>
                         </Grid>
                   }
-                  if(i.value =='BarGraph1'){
+                  if(i.value ==='BarGraph1'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
                           <Text><BarGraph barData={jsondata.data2} title={i.title}/></Text>
                         </Grid>
                   }
-                  if(i.value =='PolarGraph1'){
+                  if(i.value ==='PolarGraph1'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
                           <Text><PolarGraph polarData={jsondata.data4} title={i.title}/></Text>
                         </Grid>
@@ -135,68 +132,67 @@ class App extends Component {
             </div>
 
             <div className={`${classes.bottom} ${classes.root}`}>
-            
+            <p style={{marginBottom:2, paddingLeft:"39%"}}>App 2</p>
               <Grid container spacing={0} >
-
+              
                 {data.map(i => {
-                  if(i.value =='LineGraph2'){
+                  if(i.value ==='LineGraph2'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
-                        <Text><LineGraph lineData={jsondata.data4} title={i.title}/></Text>
+                        <Text><LineGraph lineData={jsondata2.data4} title={i.title}/></Text>
                       </Grid>
                   }
-                  if(i.value =='PieGraph2'){
+                  if(i.value ==='PieGraph2'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
-                        <Text><PieGraph pieData={jsondata.data2} title={i.title}/></Text>
+                        <Text><PieGraph pieData={jsondata2.data2} title={i.title}/></Text>
                       </Grid>
                   }
-                  if(i.value =='BarGraph2'){
+                  if(i.value ==='BarGraph2'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
-                        <Text><BarGraph barData={jsondata.data1} title={i.title}/></Text>
+                        <Text><BarGraph barData={jsondata2.data1} title={i.title}/></Text>
                       </Grid>
                   }
-                  if(i.value =='PolarGraph2'){
+                  if(i.value ==='PolarGraph2'){
                     return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,i.value)}>
-                        <Text><PolarGraph polarData={jsondata.data3}  title={i.title}/></Text>
+                        <Text><PolarGraph polarData={jsondata2.data3}  title={i.title}/></Text>
                       </Grid>
                   }
                 })}
               </Grid>
             </div>
           </div>
-          <Grid className={`${classes.half} ${classes.right}`} onDragOver={this.allowDrop} onDrop={this.onDrop}>
+          <Grid className={`${classes.half} ${classes.right}`} onDragOver={this.allowDrop} onDrop={this.onDrop} style={{overflow:"scroll"}}>
             {
               <Grid container spacing={3}  style={{paddingLeft:"1rem", paddingTop:"3rem"}}> 
               {
                 container.map(i => {
-                  if(i == 'LineGraph1'){
+                  if(i === 'LineGraph1'){
                     return <Grid sm={5} xs={5} style={{padding:2}}> <Text><LineGraph lineData={jsondata.data1} title={"jsondata.data1.label"}/></Text> </Grid>               
                   }
-                  else if(i == 'PieGraph1'){
+                  else if(i === 'PieGraph1'){
                     return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PieGraph pieData={jsondata.data3} title={jsondata.data3.label}/></Text> </Grid>               
                   }
-                  else if(i == 'BarGraph1'){
+                  else if(i === 'BarGraph1'){
                     return <Grid sm={5} xs={5} style={{padding:2}}> <Text><BarGraph barData={jsondata.data2} title={jsondata.data2.label}/></Text> </Grid>               
                   }
-                  else if(i == 'LineGraph2'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><LineGraph lineData={jsondata.data4} title={jsondata.data4.label}/></Text> </Grid>               
+                  else if(i === 'LineGraph2'){
+                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><LineGraph lineData={jsondata2.data4} title={jsondata2.data4.label}/></Text> </Grid>               
                   }
-                  else if(i == 'PieGraph2'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PieGraph pieData={jsondata.data2} title={jsondata.data2.label}/></Text> </Grid>               
+                  else if(i === 'PieGraph2'){
+                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PieGraph pieData={jsondata2.data2} title={jsondata2.data2.label}/></Text> </Grid>               
                   }
-                  else if(i == 'BarGraph2'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><BarGraph barData={jsondata.data1} title={jsondata.data1.label}/></Text> </Grid>               
+                  else if(i === 'BarGraph2'){
+                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><BarGraph barData={jsondata2.data1} title={jsondata2.data1.label}/></Text> </Grid>               
                   }
-                  else if(i == 'PolarGraph1'){
+                  else if(i === 'PolarGraph1'){
                     return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PolarGraph polarData={jsondata.data4} title={jsondata.data4.label}/></Text> </Grid>               
                   }
-                  else if(i == 'PolarGraph2'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PolarGraph polarData={jsondata.data3} title={jsondata.data3.label}/></Text> </Grid>               
+                  else if(i === 'PolarGraph2'){
+                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PolarGraph polarData={jsondata2.data3} title={jsondata2.data3.label}/></Text> </Grid>               
                   }
 
                 })
               }
               </Grid>
-
             }
           </Grid>
         </div>
@@ -206,4 +202,3 @@ class App extends Component {
 }
 
 export default withStyles(styles)(App)
-

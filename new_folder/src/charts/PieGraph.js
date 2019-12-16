@@ -21,10 +21,8 @@ export default class PieGraph extends Component {
                 ]
             },
             options: {
-                legend: {
-                    display: false
-                },
                 tooltips: {
+                    display : true,
                     callbacks: {
                        label: function(tooltipItem) {
                               return tooltipItem.yLabel;
@@ -67,9 +65,7 @@ export default class PieGraph extends Component {
                     fontColor:'#666',
 
                 },
-                tooltips:{
-                    display : true
-                }
+               
             }
         });
     }

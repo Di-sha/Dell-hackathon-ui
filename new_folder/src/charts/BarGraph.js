@@ -19,9 +19,6 @@ export default class BarGraph extends Component {
                 datasets: [barData]
             },
             options: {
-                legend: {
-                    display: true
-                },
                 tooltips: {
                     callbacks: {
                        label: function(tooltipItem) {
@@ -30,7 +27,7 @@ export default class BarGraph extends Component {
                     }
                 },
                 title: {
-                    display: true,
+                    display: false,
                     fontSize:10,
                     padding:0,
                     text: chartTitle
